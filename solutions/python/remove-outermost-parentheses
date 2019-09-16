@@ -1,0 +1,23 @@
+class Solution(object):
+    def removeOuterParentheses(self, S):
+        """
+        :type S: str
+        :rtype: str
+        """
+        final = ""
+        left = 0
+        right = 0
+        expr = ""
+        for symbol in S:
+            if symbol == "(":
+                if left != right:
+                    expr += symbol
+                left += 1
+            else:
+                right += 1
+                if left != right:
+                    expr += symbol
+            if left == right:
+                final += expr
+                expr = ""
+        return final
